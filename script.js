@@ -720,3 +720,4 @@ function animateOnScroll() {
 
 window.addEventListener('scroll', animateOnScroll);
 
+
