@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - James Cook</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>James Cook</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="hobbies.html" class="nav-link">Hobbies</a>
+                </li>
+                <li class="nav-item">
+                    <a href="discover.html" class="nav-link">Discover</a>
+                </li>
+                <li class="nav-item">
+                    <a href="resume.html" class="nav-link active">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a href="career.html" class="nav-link">Career</a>
+                </li>
+                <li class="nav-item">
+                    <a href="game.html" class="nav-link">Game</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">Professional Resume</h1>
+                <p class="page-subtitle">My professional experience and qualifications</p>
+                <div class="resume-actions">
+                    <button class="btn btn-secondary" onclick="downloadResume()">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="resume-content">
+            <div class="container">
+                <div class="resume-layout">
+                    <div class="resume-sidebar">
+                        <div class="contact-info">
+                            <h3>Contact Information</h3>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>cook0795@d.umn.edu</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+1 (254) 383-6384</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Duluth, Minnesota</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <h3>Technical Skills</h3>
+                            <div class="skill-category">
+                                <h4>Programming Languages</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">JavaScript</span>
+                                    <span class="skill-tag">HTML</span>
+                                    <span class="skill-tag">CSS</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Physical Skills</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Carpentry</span>
+                                    <span class="skill-tag">Insulation</span>
+                                    <span class="skill-tag">Roofing</span>
+                                    <span class="skill-tag">Siding</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Transferable Skills</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Leadership</span>
+                                    <span class="skill-tag">Problem Solving</span>
+                                    <span class="skill-tag">Time Management</span>
+                                    <span class="skill-tag">Quick Learner</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="education-section">
+                            <h3>Education</h3>
+                            <div class="education-item">
+                                <h4>Labovitz School of Business and Economics Student</h4>
+                                <p>Business Administration</p>
+                                <p>University of Minnesota Duluth</p>
+                                <span class="education-date">2024 - 2028</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resume-main">
+                        <div class="professional-summary">
+                            <h2>Professional Summary</h2>
+                            <p>Goal-oriented second-year Business Administration Student at UMD Duluth leveraging a strong, proven work ethic and experience in physical trades. Possesses hands-on skills in general construction, carpentry, and heavy material handling. Actively focused on learning operational efficiency and management principles with the ultimate goal of becoming an efficient and successful business manager.</p>
+                        </div>
+
+                        <div class="experience-section">
+                            <h2>Projects & Experience</h2>
+                            
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <h3>Website Development Project</h3>
+                                    <span class="duration">Fall 2025</span>
+                                </div>
+                                <ul class="experience-details">
+                                    <li>I developed this web site that you are on right now using HTML, CSS, and JavaScript</li>
+                                    <li>Integrated images that represent my life by coding them into the website.</li>
+                                    <li>Collaborated with team members to produce key parts of the site</li>
+                                </ul>
+                            </div>
+
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <h3>Construction Operations</h3>
+                                    <span class="duration">Summer 2024</span>
+                                </div>
+                                <ul class="experience-details">
+                                    <li>Executed full-cycle construction of various structures, including sheds and pole barns, from foundation preparation to final assembly</li>
+                                    <li>Collaborated effectively within a construction team, optimizing workflows to meet daily build targets and safety standards</li>
+                                    <li>Developed proficiency in carpentry techniques, construction safety protocols, and the use of specialized power tools through intensive on-the-job training</li>
+                                </ul>
+                            </div>
+
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <h3>Osceola Powerlifting Club</h3>
+                                    <span class="duration">2021 - 2024</span>
+                                </div>
+                                <ul class="experience-details">
+                                    <li>Competed across local and state level competitions</li>
+                                    <li>Placed in the top 5 contenders at the state competitions for bench</li>
+                                    <li>Achieved above a 1000 pound total for all lifts combined</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>James Cook</h3>
+                    <p>Student at University of Minnesota Duluth</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="resume.html">Resume</a></li>
+                        <li><a href="career.html">Career</a></li>
+                    </ul>
+                </div>
+                
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 James Cook. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

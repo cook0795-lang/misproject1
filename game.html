@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game - James Cook</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="game.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>James Cook</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="hobbies.html" class="nav-link">Hobbies</a></li>
+                <li class="nav-item"><a href="discover.html" class="nav-link">Discover</a></li>
+                <li class="nav-item"><a href="resume.html" class="nav-link">Resume</a></li>
+                <li class="nav-item"><a href="career.html" class="nav-link">Career</a></li>
+                <li class="nav-item"><a href="game.html" class="nav-link active">Game</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">Hotdog vs Condiments</h1>
+                <p class="page-subtitle">Defend your hotdog from the condiment invasion!</p>
+            </div>
+        </section>
+
+        <section class="game-container">
+            <div class="container">
+                <div class="game-wrapper">
+                    <div class="game-info">
+                        <div class="score-board">
+                            <div class="score-item">
+                                <span class="score-label">Score</span>
+                                <span id="score">0</span>
+                            </div>
+                            <div class="score-item">
+                                <span class="score-label">Level</span>
+                                <span id="level">1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="canvas-container">
+                        <canvas id="gameCanvas" width="800" height="600"></canvas>
+                    </div>
+
+                    <div class="game-instructions">
+                        <h3>How to Play:</h3>
+                        <ul>
+                            <li>Use <strong>Left</strong> and <strong>Right Arrow</strong> keys to move the hotdog</li>
+                            <li>Press <strong>S</strong> to shoot condiment bottles (ketchup and mustard)</li>
+                            <li>Destroy all condiment bottles in each level</li>
+                            <li>Don't let them reach the bottom of the screen</li>
+                            <li>Click "Next Level" to continue when you clear a level</li>
+                            <li>Each level gets 2.5% faster!</li>
+                            <li>Use touch controls below for mobile play</li>
+                            <li><strong>If the game freezes, refresh the page to continue playing</strong></li>
+                        </ul>
+                    </div>
+
+                    <!-- Mobile touch controls -->
+                    <div class="mobile-controls">
+                        <button class="touch-button" id="leftBtn">←</button>
+                        <button class="touch-button" id="shootBtn">S</button>
+                        <button class="touch-button" id="rightBtn">→</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Background game music -->
+    <audio id="gameMusic" src="images/game.mp3" loop></audio>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>James Cook</h3>
+                    <p>Student at University of Minnesota Duluth</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="resume.html">Resume</a></li>
+                        <li><a href="career.html">Career</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 James Cook. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="hotdog-game.js"></script>
+    <script>
+        // Mobile controls functionality
+        function setupMobileControls() {
+            const gameInstance = window.gameInstance;
+            if (!gameInstance) return;
+
+            const leftBtn = document.getElementById('leftBtn');
+            const rightBtn = document.getElementById('rightBtn');
+            const shootBtn = document.getElementById('shootBtn');
+
+            if (!leftBtn || !rightBtn || !shootBtn) return;
+
+            leftBtn.addEventListener('touchstart', e => { e.preventDefault(); gameInstance.keys['ArrowLeft'] = true; });
+            leftBtn.addEventListener('touchend', e => { e.preventDefault(); gameInstance.keys['ArrowLeft'] = false; });
+
+            rightBtn.addEventListener('touchstart', e => { e.preventDefault(); gameInstance.keys['ArrowRight'] = true; });
+            rightBtn.addEventListener('touchend', e => { e.preventDefault(); gameInstance.keys['ArrowRight'] = false; });
+
+            shootBtn.addEventListener('touchstart', e => { e.preventDefault(); gameInstance.keys['KeyS'] = true; });
+            shootBtn.addEventListener('touchend', e => { e.preventDefault(); gameInstance.keys['KeyS'] = false; });
+        }
+
+        // Wait for game instance to be ready
+        function waitForGame() {
+            const gameInstance = window.gameInstance;
+            if (gameInstance) {
+                setupMobileControls();
+            } else {
+                setTimeout(waitForGame, 50);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => { setTimeout(waitForGame, 100); });
+        } else {
+            setTimeout(waitForGame, 100);
+        }
+
+        window.addEventListener('load', () => { setTimeout(waitForGame, 100); });
+
+        // Update level display
+        function updateLevelDisplay() {
+            const levelElement = document.getElementById('level');
+            if (levelElement && window.gameInstance) {
+                levelElement.textContent = window.gameInstance.currentWave;
+            }
+        }
+
+        function setupLevelDisplayUpdates() {
+            if (typeof Game === 'undefined') {
+                setTimeout(setupLevelDisplayUpdates, 50);
+                return;
+            }
+
+            const originalNextLevel = Game.prototype.nextLevel;
+            Game.prototype.nextLevel = function() {
+                originalNextLevel.call(this);
+                updateLevelDisplay();
+            };
+
+            const originalRestart = Game.prototype.restart;
+            Game.prototype.restart = function() {
+                originalRestart.call(this);
+                updateLevelDisplay();
+            };
+
+            setTimeout(updateLevelDisplay, 300);
+        }
+
+        setupLevelDisplayUpdates();
+
+        // Play game music when first interaction occurs
+        function playGameMusic() {
+            const music = document.getElementById('gameMusic');
+            if (music) {
+                music.play().catch(err => { console.log("Autoplay prevented:", err); });
+            }
+        }
+
+        // Start music on first key press or first touch
+        document.addEventListener('keydown', playGameMusic, { once: true });
+        document.addEventListener('touchstart', playGameMusic, { once: true });
+    </script>
+</body>
+</html>
